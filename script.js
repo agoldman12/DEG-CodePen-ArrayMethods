@@ -50,7 +50,6 @@ Feel free to add parameters, as needed.
 */
 
 
-/*
 people.forEach(function(person){
 	if(person.allegiance === "House Stark"){
 		return person.allegiance;
