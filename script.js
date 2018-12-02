@@ -44,62 +44,27 @@ let people = [
 	}
 ];
 
+const houseStark = people.filter(person => person.allegiance == 'House Stark');
+const houseTargaryen = people.filter(person => person.allegiance == 'House Targaryen');
+const houseLannister = people.filter(person => person.allegiance == 'House Lannister');
 
+
+function displayNames(people) {
+	return people.map(person => person.firstName + " " + person.lastName)
+		.join('<br/>');
+}
+
+document.querySelector('#test').innerHTML = `
+	  ${displayNames(houseStark)} 
+<br/> ${displayNames(houseTargaryen)}
+<br/> ${displayNames(houseLannister)} `
 /* replace the return value with a string of html to display on the DOM
 Feel free to add parameters, as needed.
 */
 
-
-people.forEach(function(person){
-	if(person.allegiance === "House Stark"){
-		return person.allegiance;
-	}
-	const testdiv = document.querySelector('#test');
-	testdiv.innerHTML = `<b>${person.allegiance}</b> 
-	<div>
-		<ul>
-			<li>${person.firstName} ${person.lastName}</li>
-		<ul>
-	</div>`
-});
-/* Why does ^^ give me house Targaryen and only one of the two Targaryen people? */
-
-//filter house stark into an array called Stark
-const Stark = people.filter(function(person){
-	if(person.allegiance === "House Stark"){
-		return person.allegiance;
-	}
-}); 
-console.log(Stark);
-
-//filter house targaryen into an array called Targaryen
-const Targaryen = people.filter(function(person){
-	if(person.allegiance === "House Targaryen"){
-		return person;
-	}
-});
-console.log(Targaryen);
-
-//filter house lannister into an array called Lannister
-const Lannister = people.filter(function(person){
-	if(person.allegiance === "House Lannister"){
-		return person;
-	}
-});
-console.log(Lannister);
-
-
-function render() {
-	return '<div>string of html to display on the dom</div>'
+/*function render() {
+	return `<div>${displayNames(houseStark)}</div>`
 
 }
-
-document.querySelector('div').insertAdjacentHTML('afterbegin', render());
-
-
-
-/*const houses = people.map(function(person){
-	 return person.allegiance;
-});
-console.log(houses)
 */
+//document.querySelector('div').insertAdjacentHTML('afterbegin', render());
