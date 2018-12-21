@@ -1,3 +1,4 @@
+'use strict';
 /*
 The houses of Westeros are meeting to negotiate a peace treaty and they need a record of who attended.
 
@@ -44,62 +45,50 @@ let people = [
 	}
 ];
 
+//filter the people array to return the members of each house
+const houseStark = people.filter(person => person.allegiance === 'House Stark');
+const houseTargaryen = people.filter(person => person.allegiance === 'House Targaryen');
+const houseLannister = people.filter(person => person.allegiance === 'House Lannister');
 
-/* replace the return value with a string of html to display on the DOM
-Feel free to add parameters, as needed.
+//display the first and last name of the people in each house
+function displayNames(people) {
+	return people.map(person => person.firstName + " " + person.lastName)
+		.join('<br/>');
+}
+
+//put house names into an array without repeating any that are already there
+function displayHouse(people, allegiance){
+	const houseList = [];
+		 people.forEach(function(person){
+		 if (houseList.indexOf(person.allegiance) === -1) {
+	         houseList.push(person.allegiance);
+	    }
+    });
+	
+
+	console.log(houseList);
+}//end displayHouse
+
+displayHouse(people);
+
+ /*replace the return value with a string of html to display on the DOM
+    Feel free to add parameters, as needed.
+ -------------------------------------------------------------------   
+	missing the steps below:
+    2. loop through houselist and call new display house function. << what does this do? Where do I do that? 
+
+	3. in render function, call 'displayhouse' and pass filtered array name. 1 for each house.
 */
 
-
-people.forEach(function(person){
-	if(person.allegiance === "House Stark"){
-		return person.allegiance;
-	}
-	const testdiv = document.querySelector('#test');
-	testdiv.innerHTML = `<b>${person.allegiance}</b> 
-	<div>
-		<ul>
-			<li>${person.firstName} ${person.lastName}</li>
-		<ul>
-	</div>`
-});
-/* Why does ^^ give me house Targaryen and only one of the two Targaryen people? */
-
-//filter house stark into an array called Stark
-const Stark = people.filter(function(person){
-	if(person.allegiance === "House Stark"){
-		return person.allegiance;
-	}
-}); 
-console.log(Stark);
-
-//filter house targaryen into an array called Targaryen
-const Targaryen = people.filter(function(person){
-	if(person.allegiance === "House Targaryen"){
-		return person;
-	}
-});
-console.log(Targaryen);
-
-//filter house lannister into an array called Lannister
-const Lannister = people.filter(function(person){
-	if(person.allegiance === "House Lannister"){
-		return person;
-	}
-});
-console.log(Lannister);
-
-
 function render() {
-	return '<div>string of html to display on the dom</div>'
-
+	return `
+	<br>${displayNames(houseStark)}
+	<br>${displayNames(houseTargaryen)}
+	<br>${displayNames(houseLannister)}
+	`
 }
 
 document.querySelector('div').insertAdjacentHTML('afterbegin', render());
 
 
 
-/*const houses = people.map(function(person){
-	 return person.allegiance;
-});
-console.log(houses)
-*/
