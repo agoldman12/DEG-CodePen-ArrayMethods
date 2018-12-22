@@ -68,7 +68,7 @@ function getHouse(){
 	
 	return houseList;
 	//console.log(houseList);
-}//end displayHouse
+}//end getHouse
 
 
 
