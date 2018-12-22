@@ -57,28 +57,6 @@ function displayNames(people) {
 }
 
 //put house names into an array without repeating any that are already there
-function displayHouse(people, allegiance){
-	const houseList = [];
-		 people.forEach(function(person){
-		 if (houseList.indexOf(person.allegiance) === -1) {
-	         houseList.push(person.allegiance);
-	    }
-    });
-	
-
-	console.log(houseList);
-}//end displayHouse
-
-displayHouse(people);
-
- /*replace the return value with a string of html to display on the DOM
-    Feel free to add parameters, as needed.
- -------------------------------------------------------------------   
-	missing the steps below:
-    2. loop through houselist and call new display house function. << what does this do? Where do I do that? 
-
-	3. in render function, call 'displayhouse' and pass filtered array name. 1 for each house.
-*/
 
 function render() {
 	return `
