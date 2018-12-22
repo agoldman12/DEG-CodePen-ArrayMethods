@@ -57,41 +57,6 @@ function displayNames(people) {
 }
 
 //put house names into an array without repeating any that are already there
-function getHouse(){
-	const houseList = [];
-		 people.forEach(function(person, allegiance){
-		 if (houseList.indexOf(person.allegiance) === -1) {
-	         houseList.push(person.allegiance);
-	    }
-		
-    });
-	
-	return houseList;
-	//console.log(houseList);
-}//end displayHouse
-
-
-
-function displayHouse(houseName, people){
-     //write loop through list of people 
-	  //and print out name of house and any peopole whose allegiance = name of house  
-}
-
-
-let houseList = getHouse(); //saves function to a variable so I have access to the houseList array
-let displayDiv = document.querySelector('#test');
-
-for(i = 0; i < houseList.length; i++){
-	displayDiv.insertAdjacentHTML(`afterbegin`, displayHouse(houseList[i], people) )
-	
-}
-
-displayHouse(houseList, people); // calls displaysHouse function 
-
- /*replace the return value with a string of html to display on the DOM
-    Feel free to add parameters, as needed.
- -------------------------------------------------------------------   
-*/
 
 function render() {
 	return `
