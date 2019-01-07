@@ -70,13 +70,22 @@ function getHouse(){
 function displayHouse(houseName, people){
     //write loop through list of people 
       //and print out name of house and any people whose allegiance = name of house
-     people.forEach(function(person){
-         if(person.allegiance === houseName){
-             console.log( person.firstName + ' ' + person.lastName);
+    
+    let names =  people.reduce(function(acc, person){
+        if(person.allegiance === houseName){
+             return  acc + '<li>' + person.firstName + person.lastName + '</li>';
          }
+          return acc
+     }, " ");
          
-     });
-
+        
+     
+     return `<div>
+                <b>${houseName}</b>
+                <ul>
+                   ${names}
+                </ul>
+             </div>`
 }
 
 
