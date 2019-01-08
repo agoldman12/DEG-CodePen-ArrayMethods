@@ -41,17 +41,6 @@ let people = [
     }
 ];
 
-//filter the people array to return the members of each house
-const houseStark = people.filter(person => person.allegiance === 'House Stark');
-const houseTargaryen = people.filter(person => person.allegiance === 'House Targaryen');
-const houseLannister = people.filter(person => person.allegiance === 'House Lannister');
-
-//display the first and last name of the people in each house
-function displayNames(people) {
-    return people.map(person => person.firstName + " " + person.lastName)
-        .join('<br/>');
-}
-
 //put house names into an array without repeating any that are already there
 function getHouse(){
     const houseList = [];
@@ -71,47 +60,28 @@ function displayHouse(houseName, people){
     //write loop through list of people 
       //and print out name of house and any people whose allegiance = name of house
     
-    let names =  people.reduce(function(acc, person){
+    let names = people.reduce(function(acc, person){
         if(person.allegiance === houseName){
-             return  acc + '<li>' + person.firstName + person.lastName + '</li>';
+             return  acc + '<li>' + person.firstName + " " + person.lastName + '</li>';
          }
           return acc
      }, " ");
          
-        
-     
-     return `<div>
+	return `<div>
                 <b>${houseName}</b>
                 <ul>
                    ${names}
                 </ul>
              </div>`
-}
+}//end displayHouse
 
+//saves function to a variable so I have access to the houseList array
+let houseList = getHouse(); 
+//reference to the html where I'd like to display the data from the displayHouse() function
+let wrapper = document.querySelector('#wrapper');
 
-let houseList = getHouse(); //saves function to a variable so I have access to the houseList array
-let displayDiv = document.querySelector('#test');
-
+//for loop inserts the html created by the display house function
 for(let i = 0; i < houseList.length; i++){
-    displayDiv.insertAdjacentHTML('afterbegin', displayHouse(houseList[i], people));
-    //displayDiv.insertAdjacentHTML('afterbegin', `${houseList[i]} <br>`);
-
-    
+    wrapper.insertAdjacentHTML('beforeend', displayHouse(houseList[i], people));
+   
 }
-
-displayHouse(houseList, people); //calls displaysHouse function
-
-/*replace the return value with a string of html to display on the DOM
-   Feel free to add parameters, as needed.
--------------------------------------------------------------------  
-*/
-
-function render() {
-    return `
-    <br>${displayNames(houseStark)}
-    <br>${displayNames(houseTargaryen)}
-    <br>${displayNames(houseLannister)}
-    `
-}
-
-document.querySelector('div').insertAdjacentHTML('afterbegin', render());
